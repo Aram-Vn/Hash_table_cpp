@@ -1,0 +1,3 @@
+[submodule "lib/Single_linked_list"]
+	path = lib/Single_linked_list
+	url = git@github.com:Aram-Vn/Single_linked_list.git
