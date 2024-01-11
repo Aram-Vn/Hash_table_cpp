@@ -10,6 +10,5 @@ file(GLOB_RECURSE HDR_FILES "src/*.h")
 
 add_executable(HashTable ${SRC_FILES} ${HPP_FILES} ${HDR_FILES})
 
-add_subdirectory(lib/Single_linked_list)
 target_include_directories(HashTable PRIVATE lib/Single_linked_list/src)
-target_link_libraries(HashTable Single_linked_list)
+target_include_directories(HashTable PRIVATE lib/Pair_CPP/src)

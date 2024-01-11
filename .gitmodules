@@ -1,3 +1,6 @@
 [submodule "lib/Single_linked_list"]
 	path = lib/Single_linked_list
 	url = git@github.com:Aram-Vn/Single_linked_list.git
+[submodule "lib/Pair_CPP"]
+	path = lib/Pair_CPP
+	url = git@github.com:Aram-Vn/Pair_CPP.git
