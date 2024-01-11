@@ -198,6 +198,22 @@ std::vector<T> my::HashTable<K, T>::values()
     return res;
 }
 
+template <class K, class T>
+std::vector<my::Pair<K, T>> my::HashTable<K, T>::entrySet()
+{
+    std::vector<my::Pair<K, T>> res;
+
+    for(size_t i = 0; i < m_table.size(); ++i)
+    {
+        for(auto it = m_table[i].begin(); it!= m_table[i].end(); ++it)
+        {
+            res.push_back(it->m_val);
+        }
+    }
+
+    return res;
+}
+
 template <typename K, typename T>
 typename my::Forward_list<my::Pair<K, T>>::f_itr my::HashTable<K, T>::find_key(const K& key)
 {

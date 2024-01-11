@@ -15,20 +15,20 @@ namespace my {
         ~HashTable() = default; //
         HashTable();            //
 
-        void Insertion(my::Pair<K, T> put); //
-        T Retrieval(K Get);                 // delete??
-        void Deletion(K key);               //
-        void put(K key, const T& value);    //
-        T get(K key);                       //
-        void remove(K key);                 //
-        bool containsKey(K key);            //
-        bool containsValue(const T& value); //
-        size_t size() const;                //
-        bool isEmpty();                     //
-        void clear();                       //
-        std::vector<K> keySet();            //
-        std::vector<T> values();            //
-        // entrySet()
+        void Insertion(my::Pair<K, T> put);     //
+        T Retrieval(K Get);                     // delete??
+        void Deletion(K key);                   //
+        void put(K key, const T& value);        //
+        T get(K key);                           //
+        void remove(K key);                     //
+        bool containsKey(K key);                //
+        bool containsValue(const T& value);     //
+        size_t size() const;                    //
+        bool isEmpty();                         //
+        void clear();                           //
+        std::vector<K> keySet();                //
+        std::vector<T> values();                //
+        std::vector<my::Pair<K, T>> entrySet(); //
         void rehash();
 
     private:

@@ -19,42 +19,50 @@ int main()
 
     std::cout << h.Retrieval(8) << std::endl;
 
-    // h.clear();
+    std::vector<my::Pair<int, int>> res = h.entrySet();
 
-    std::vector<int> vec = h.keySet();
-
-    for( const auto& v : vec){
-        std::cout << v << " ";
+    for( const auto& v : res){
+        std::cout << v.first << " " << v.second << " ";
+        std::cout << std::endl;
     }
     std::cout << std::endl;
 
-    vec.clear();
+    h.clear();
 
-    vec = h.values();
+    // std::vector<int> vec = h.keySet();
 
-    for (const auto& v : vec)
-    {
-        std::cout << v << " ";
-    }
-    std::cout << std::endl;
+    // for( const auto& v : vec){
+    //     std::cout << v << " ";
+    // }
+    // std::cout << std::endl;
 
-    if (h.containsKey(8))
-    {
-        std::cout << "yes" << std::endl;
-    }
-    else
-    {
-        std::cout << "NO" << std::endl;
-    }
+    // vec.clear();
 
-    if (h.containsValue(5))
-    {
-        std::cout << h.size() << " yes" << std::endl;
-    }
-    else
-    {
-        std::cout << "NO" << std::endl;
-    }
+    // vec = h.values();
+
+    // for (const auto& v : vec)
+    // {
+    //     std::cout << v << " ";
+    // }
+    // std::cout << std::endl;
+
+    // if (h.containsKey(8))
+    // {
+    //     std::cout << "yes" << std::endl;
+    // }
+    // else
+    // {
+    //     std::cout << "NO" << std::endl;
+    // }
+
+    // if (h.containsValue(5))
+    // {
+    //     std::cout << h.size() << " yes" << std::endl;
+    // }
+    // else
+    // {
+    //     std::cout << "NO" << std::endl;
+    // }
 
     // std::cout << h.m_primes.size() << std::endl;
 
