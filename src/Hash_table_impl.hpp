@@ -1,12 +1,13 @@
 #ifndef HASH_TABLE_IMPL_HPP
 #define HASH_TABLE_IMPL_HPP
 
-#include "Hash_table.h"
-#include "Single_linked_list.h"
-#include "my_pair.h"
-#include <cstddef>
-#include <vector>
+// #include "Hash_table.h"
+// #include "Single_linked_list.h"
+// #include "my_pair.h"
+// #include <cstddef>
+// #include <vector>
 
+//--------------------_parametrize_ctor_------------------------//
 template <class K, class T>
 my::HashTable<K, T>::HashTable() : m_prime_ind(3), m_max_size(0)
 {
@@ -15,6 +16,7 @@ my::HashTable<K, T>::HashTable() : m_prime_ind(3), m_max_size(0)
     m_table.resize(m_primes[m_prime_ind]);
 }
 
+//------------------------_Insertion_---------------------------//
 template <class K, class T>
 void my::HashTable<K, T>::Insertion(my::Pair<K, T> put)
 {
@@ -42,6 +44,7 @@ void my::HashTable<K, T>::Insertion(my::Pair<K, T> put)
     m_table[ind].push_front(put);
 }
 
+//----------------------------_Retrieval_--------------------------//
 template <typename K, typename T>
 T my::HashTable<K, T>::Retrieval(K Get)
 {
@@ -59,6 +62,7 @@ T my::HashTable<K, T>::Retrieval(K Get)
     }
 }
 
+//------------------------------_Deletion_--------------------------//
 template <typename K, typename T>
 void my::HashTable<K, T>::Deletion(K key)
 {
@@ -77,12 +81,14 @@ void my::HashTable<K, T>::Deletion(K key)
     }
 }
 
+//------------------------------_remove_------------------------------//
 template <typename K, typename T>
 void my::HashTable<K, T>::remove(K key)
 {
     Deletion(key);
 }
 
+//-----------------------------_put_-------------------------------//
 template <typename K, typename T>
 void my::HashTable<K, T>::put(K key, const T& value)
 {
@@ -113,6 +119,7 @@ void my::HashTable<K, T>::put(K key, const T& value)
     m_table[ind].push_front(my::make_pair(key, value));
 }
 
+//------------------------------_containsKey_-------------------------//
 template <typename K, typename T>
 bool my::HashTable<K, T>::containsKey(K key)
 {
@@ -124,6 +131,7 @@ bool my::HashTable<K, T>::containsKey(K key)
     return false;
 }
 
+//-------------------------------_containsValue_-------------------------//
 template <typename K, typename T>
 bool my::HashTable<K, T>::containsValue(const T& value)
 {
@@ -134,6 +142,7 @@ bool my::HashTable<K, T>::containsValue(const T& value)
     return false;
 }
 
+//--------------------------------_size_---------------------------------//
 template <typename K, typename T>
 size_t my::HashTable<K, T>::size() const
 {
@@ -147,6 +156,7 @@ size_t my::HashTable<K, T>::size() const
     return size;
 }
 
+//--------------------------------_isEmpty_--------------------------------//
 template <typename K, typename T>
 bool my::HashTable<K, T>::isEmpty()
 {
@@ -157,6 +167,7 @@ bool my::HashTable<K, T>::isEmpty()
     return false;
 }
 
+//-------------------------------_clear_---------------------------------//
 template <class K, class T>
 void my::HashTable<K, T>::clear()
 {
@@ -166,6 +177,7 @@ void my::HashTable<K, T>::clear()
     }
 }
 
+//--------------------------------_keySet_------------------------------//
 template <class K, class T>
 std::vector<K> my::HashTable<K, T>::keySet()
 {
@@ -182,6 +194,7 @@ std::vector<K> my::HashTable<K, T>::keySet()
     return res;
 }
 
+//--------------------------------_values_---------------------------------//
 template <class K, class T>
 std::vector<T> my::HashTable<K, T>::values()
 {
@@ -198,14 +211,15 @@ std::vector<T> my::HashTable<K, T>::values()
     return res;
 }
 
+//--------------------------------_entrySet_-------------------------------//
 template <class K, class T>
 std::vector<my::Pair<K, T>> my::HashTable<K, T>::entrySet()
 {
     std::vector<my::Pair<K, T>> res;
 
-    for(size_t i = 0; i < m_table.size(); ++i)
+    for (size_t i = 0; i < m_table.size(); ++i)
     {
-        for(auto it = m_table[i].begin(); it!= m_table[i].end(); ++it)
+        for (auto it = m_table[i].begin(); it != m_table[i].end(); ++it)
         {
             res.push_back(it->m_val);
         }
@@ -214,6 +228,11 @@ std::vector<my::Pair<K, T>> my::HashTable<K, T>::entrySet()
     return res;
 }
 
+//-------------------------------------------||
+//--------_private_helper_functins_----------||
+//-------------------------------------------||
+
+//--------------------------------_find_key-----------------------------------//
 template <typename K, typename T>
 typename my::Forward_list<my::Pair<K, T>>::f_itr my::HashTable<K, T>::find_key(const K& key)
 {
@@ -229,6 +248,7 @@ typename my::Forward_list<my::Pair<K, T>>::f_itr my::HashTable<K, T>::find_key(c
     return m_table[hash_idx].end();
 }
 
+//-----------------------------------------_find_val_------------------------------------//
 template <typename K, typename T>
 typename my::Forward_list<my::Pair<K, T>>::f_itr my::HashTable<K, T>::find_val(const T& val)
 {
@@ -246,6 +266,7 @@ typename my::Forward_list<my::Pair<K, T>>::f_itr my::HashTable<K, T>::find_val(c
     return nullptr;
 }
 
+//--------------------------------------_prime_------------------------------//
 template <class K, class T>
 void my::HashTable<K, T>::prime() // function to find prime numbers
 {

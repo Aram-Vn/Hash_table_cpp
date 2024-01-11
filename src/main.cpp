@@ -25,9 +25,8 @@ int main()
         std::cout << v.first << " " << v.second << " ";
         std::cout << std::endl;
     }
-    std::cout << std::endl;
 
-    h.clear();
+    // h.clear();
 
     // std::vector<int> vec = h.keySet();
 
