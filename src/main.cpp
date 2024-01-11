@@ -14,11 +14,25 @@ int main()
 
     my::HashTable<int, int> h;
 
-    std::cout << h.m_primes.size() << std::endl;
+    my::Pair<int, int> test = my::make_pair(2, 88);
 
-    for(auto& elem : h.m_primes)
-    {
-        std::cout << elem << " ";
-    }
-    std::cout << std::endl;
+    h.Insertion(test);
+
+
+
+    std::cout << h.m_table.size() << std::endl;
+
+    // std::cout << h.m_primes.size() << std::endl;
+
+    // // for(auto& elem : h.m_primes)
+    // // {
+    // //     std::cout << elem << " ";
+    // // }
+    // // std::cout << std::endl;
+
+    // for(int i = 0; i < 10; ++i)
+    // {
+    //     std::cout << h.m_primes[i] << " ";
+    // }
+    // std::cout << std::endl;
 }

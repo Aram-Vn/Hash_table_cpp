@@ -2,10 +2,10 @@
 #define HASH_TABLE_H
 
 #include <Single_linked_list.h>
+#include <cmath>
 #include <iostream>
 #include <my_pair.h>
 #include <vector>
-#include <cmath>
 
 namespace my {
     template <class K, class T>
@@ -32,14 +32,15 @@ namespace my {
         void rehash();
 
     private:
-        void prime();
+        void prime(); // function to find prime numbers
+        // void hasher(); 
 
     private:
-        std::vector<my::Forward_list<my::Pair<K, T>>> m_table;
-        K m_key;
-
     public:
-        std::vector<size_t> m_primes;
+        std::vector<my::Forward_list<my::Pair<K, T>>> m_table; // our hashTable
+        std::vector<size_t> m_primes;                          // to hold prime numbers for m_kee
+        size_t m_prime_ind;                                    // to hold prime number index
+        K m_key;                                               // mey for hashing
     };
 
 } // namespace my
