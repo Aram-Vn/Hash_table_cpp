@@ -8,23 +8,23 @@
 #include <vector>
 
 namespace my {
-    template <class K, class T>
+    template <typename K, typename T>
     class HashTable
     {
     public:
-        ~HashTable() = default;
-        HashTable();
+        ~HashTable() = default; //
+        HashTable();            //
 
-        void Insertion(my::Pair<K, T> put);
-        T Retrieval(K Get); // delete??
-        void Deletion(K key);
-        void put(K key, T value);
-        T get(K key);
-        void remove(K key);
-        bool containsKey(K key);
-        bool containsValue(T value);
-        size_t size();
-        bool isEmpty();
+        void Insertion(my::Pair<K, T> put); //
+        T Retrieval(K Get);                 // delete??
+        void Deletion(K key);               //
+        void put(K key, const T& value);    //
+        T get(K key);                       //
+        void remove(K key);                 //
+        bool containsKey(K key);            //
+        bool containsValue(const T& value); //
+        size_t size() const;                //
+        bool isEmpty();                     //
         void clear();
         std::vector<K> keySet();
         std::vector<T> values();
@@ -33,7 +33,9 @@ namespace my {
 
     private:
         void prime(); // function to find prime numbers
-        // void hasher(); 
+        // void hasher();
+        typename my::Forward_list<my::Pair<K, T>>::f_itr find_key(const K& key);
+        typename my::Forward_list<my::Pair<K, T>>::f_itr find_val(const T& val);
 
     private:
     public:
@@ -41,6 +43,7 @@ namespace my {
         std::vector<size_t> m_primes;                          // to hold prime numbers for m_kee
         size_t m_prime_ind;                                    // to hold prime number index
         K m_key;                                               // mey for hashing
+        int m_max_size;                                        // for holding max size of nodes in some index
     };
 
 } // namespace my
