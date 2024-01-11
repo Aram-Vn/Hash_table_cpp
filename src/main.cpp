@@ -2,6 +2,7 @@
 #include <Single_linked_list.h>
 #include <iostream>
 #include <my_pair.h>
+#include <vector>
 
 int main()
 {
@@ -19,6 +20,23 @@ int main()
     std::cout << h.Retrieval(8) << std::endl;
 
     // h.clear();
+
+    std::vector<int> vec = h.keySet();
+
+    for( const auto& v : vec){
+        std::cout << v << " ";
+    }
+    std::cout << std::endl;
+
+    vec.clear();
+
+    vec = h.values();
+
+    for (const auto& v : vec)
+    {
+        std::cout << v << " ";
+    }
+    std::cout << std::endl;
 
     if (h.containsKey(8))
     {

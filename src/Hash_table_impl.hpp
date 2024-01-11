@@ -5,6 +5,7 @@
 #include "Single_linked_list.h"
 #include "my_pair.h"
 #include <cstddef>
+#include <vector>
 
 template <class K, class T>
 my::HashTable<K, T>::HashTable() : m_prime_ind(3), m_max_size(0)
@@ -163,6 +164,38 @@ void my::HashTable<K, T>::clear()
     {
         h_table.clear();
     }
+}
+
+template <class K, class T>
+std::vector<K> my::HashTable<K, T>::keySet()
+{
+    std::vector<K> res;
+
+    for (int i = 0; i < m_table.size(); ++i)
+    {
+        for (auto it = m_table[i].begin(); it != m_table[i].end(); ++it)
+        {
+            res.push_back(it->m_val.first);
+        }
+    }
+
+    return res;
+}
+
+template <class K, class T>
+std::vector<T> my::HashTable<K, T>::values()
+{
+    std::vector<T> res;
+
+    for (int i = 0; i < m_table.size(); ++i)
+    {
+        for (auto it = m_table[i].begin(); it != m_table[i].end(); ++it)
+        {
+            res.push_back(it->m_val.second);
+        }
+    }
+
+    return res;
 }
 
 template <typename K, typename T>

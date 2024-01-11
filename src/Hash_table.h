@@ -25,9 +25,9 @@ namespace my {
         bool containsValue(const T& value); //
         size_t size() const;                //
         bool isEmpty();                     //
-        void clear();
-        std::vector<K> keySet();
-        std::vector<T> values();
+        void clear();                       //
+        std::vector<K> keySet();            //
+        std::vector<T> values();            //
         // entrySet()
         void rehash();
 
