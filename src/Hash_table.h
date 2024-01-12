@@ -16,7 +16,7 @@ namespace my {
         HashTable();            //
 
         void Insertion(my::Pair<K, T> put);     //
-        T Retrieval(K Get);                     // delete??
+        T Retrieval(K Get);                     //
         void Deletion(K key);                   //
         void put(K key, const T& value);        //
         T get(K key);                           //
