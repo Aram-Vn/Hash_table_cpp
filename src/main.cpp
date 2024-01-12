@@ -11,13 +11,17 @@ int main()
     my::Pair<int, int> test = my::make_pair(2, 88);
 
     h.Insertion(test);
-    h.put(8, 5);
-    h.put(7, 7);
+    h.put(1, 5);
+    h.put(2, 7);
+    h.put(3, 9);
+    h.put(4, 2);
+    h.put(5, 5);
     h.put(6, 7);
+    h.put(7, 7);
 
     std::cout << h.m_table.size() << std::endl;
 
-    std::cout << h.Retrieval(8) << std::endl;
+    std::cout << h.Retrieval(7) << std::endl;
 
     std::vector<my::Pair<int, int>> res = h.entrySet();
 
@@ -25,6 +29,7 @@ int main()
         std::cout << v.first << " " << v.second << " ";
         std::cout << std::endl;
     }
+
 
     // h.clear();
 

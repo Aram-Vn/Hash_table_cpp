@@ -15,24 +15,24 @@ namespace my {
         ~HashTable() = default; //
         HashTable();            //
 
-        void Insertion(my::Pair<K, T> put);     //
-        T Retrieval(K Get);                     //
-        void Deletion(K key);                   //
-        void put(K key, const T& value);        //
-        T get(K key);                           //
-        void remove(K key);                     //
-        bool containsKey(K key);                //
-        bool containsValue(const T& value);     //
-        size_t size() const;                    //
-        bool isEmpty();                         //
-        void clear();                           //
-        std::vector<K> keySet();                //
-        std::vector<T> values();                //
-        std::vector<my::Pair<K, T>> entrySet(); //
-        void rehash();
+        void Insertion(my::Pair<K, T> put);     // Associates a key-value pair in the hashtable.
+        T Retrieval(K Get);                     // Retrieves the value associated with a given key.
+        void Deletion(K key);                   // Removes the key-value pair associated with a given key.
+        void put(K key, const T& value);        // nserts a key-value pair into the hashtable.
+        T get(K key);                           // Retrieves the value associated with the given key.
+        void remove(K key);                     // Removes the key-value pair associated with the given key
+        bool containsKey(K key);                // Checks if the hashtable contains a specific key.
+        bool containsValue(const T& value);     // Checks if the hashtable contains a specific value.
+        size_t size() const;                    // Returns the number of key-value pairs in the hashtable
+        bool isEmpty();                         // Checks if the hashtable is empty
+        void clear();                           // Removes all key-value pairs from the hashtable
+        std::vector<K> keySet();                // Returns a set of all keys in the hashtable
+        std::vector<T> values();                // Returns a collection of all values in the hashtable
+        std::vector<my::Pair<K, T>> entrySet(); // Returns a set of key-value pairs (entries) in the hashtable
+        void rehash();                          // Increases the size of the hashtable and rehashes its contents
 
     private:
-        void prime(); // function to find prime numbers
+        size_t prime(); // function to find prime numbers
         // void hasher();
         typename my::Forward_list<my::Pair<K, T>>::f_itr find_key(const K& key);
         typename my::Forward_list<my::Pair<K, T>>::f_itr find_val(const T& val);
@@ -40,8 +40,6 @@ namespace my {
     private:
     public:
         std::vector<my::Forward_list<my::Pair<K, T>>> m_table; // our hashTable
-        std::vector<size_t> m_primes;                          // to hold prime numbers for m_kee
-        size_t m_prime_ind;                                    // to hold prime number index
         K m_key;                                               // mey for hashing
         int m_max_size;                                        // for holding max size of nodes in some index
     };

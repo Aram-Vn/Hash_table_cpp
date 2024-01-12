@@ -8,12 +8,13 @@
 // #include <vector>
 
 //--------------------_parametrize_ctor_------------------------//
+#include <vector>
 template <class K, class T>
-my::HashTable<K, T>::HashTable() : m_prime_ind(3), m_max_size(0)
+my::HashTable<K, T>::HashTable() :  m_max_size(0)
 {
-    prime();
-    m_key = m_primes[m_prime_ind];
-    m_table.resize(m_primes[m_prime_ind]);
+    // prime();
+    m_key = 7;
+    m_table.resize(7);
 }
 
 //------------------------_Insertion_---------------------------//
@@ -268,15 +269,17 @@ typename my::Forward_list<my::Pair<K, T>>::f_itr my::HashTable<K, T>::find_val(c
 
 //--------------------------------------_prime_------------------------------//
 template <class K, class T>
-void my::HashTable<K, T>::prime() // function to find prime numbers
+size_t my::HashTable<K, T>::prime() // function to find prime numbers
 {
-    m_primes.reserve(100000);
+    std::vector<size_t> primes;
+
+    primes.reserve(100000);
     int num = 2;
-    while (m_primes.size() < 100000)
+    while (primes.size() < 100000)
     {
         bool check = true;
         size_t val = sqrt(num);
-        for (auto& elem : m_primes)
+        for (auto& elem : primes)
         {
             if (elem > val)
             {
@@ -292,7 +295,11 @@ void my::HashTable<K, T>::prime() // function to find prime numbers
 
         if (check)
         {
-            m_primes.push_back(num);
+            primes.push_back(num);
+            if (num > m_key)
+            {
+                return num;
+            }
         }
 
         ++num;
