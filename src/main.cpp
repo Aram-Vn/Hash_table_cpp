@@ -6,9 +6,9 @@
 
 int main()
 {
-    my::HashTable<int, int> h;
+    my::HashTable<int, double> h;
 
-    my::Pair<int, int> test = my::make_pair(2, 88);
+    my::Pair<int, double> test = my::make_pair(2.2, 8);
 
     h.Insertion(test);
     h.put(1, 5);
@@ -18,67 +18,29 @@ int main()
     h.put(5, 5);
     h.put(6, 7);
     h.put(7, 7);
+    h.put(8, 7);
+    h.put(9, 7);
+    h.put(12, 7);
+    h.put(13, 7);
+    h.put(14, 7);
+    h.put(15, 7);
+    h.put(16, 7);
+    h.put(17, 7);
 
-    std::cout << h.m_table.size() << std::endl;
+    double j = 0.1;
+
+    for (int i = 0; i < 120; ++i)
+    {
+        ++j;
+        h.put(i, j);
+    }
 
     std::cout << h.Retrieval(7) << std::endl;
 
-    std::vector<my::Pair<int, int>> res = h.entrySet();
+    std::vector<my::Pair<int, double>> res = h.entrySet();
 
     for( const auto& v : res){
         std::cout << v.first << " " << v.second << " ";
         std::cout << std::endl;
     }
-
-
-    // h.clear();
-
-    // std::vector<int> vec = h.keySet();
-
-    // for( const auto& v : vec){
-    //     std::cout << v << " ";
-    // }
-    // std::cout << std::endl;
-
-    // vec.clear();
-
-    // vec = h.values();
-
-    // for (const auto& v : vec)
-    // {
-    //     std::cout << v << " ";
-    // }
-    // std::cout << std::endl;
-
-    // if (h.containsKey(8))
-    // {
-    //     std::cout << "yes" << std::endl;
-    // }
-    // else
-    // {
-    //     std::cout << "NO" << std::endl;
-    // }
-
-    // if (h.containsValue(5))
-    // {
-    //     std::cout << h.size() << " yes" << std::endl;
-    // }
-    // else
-    // {
-    //     std::cout << "NO" << std::endl;
-    // }
-
-    // std::cout << h.m_primes.size() << std::endl;
-
-    // for(auto& elem : h.m_primes)
-    // {
-    //     std::cout << elem << " ";
-    // }
-    // std::cout << std::endl;
-
-    // for(int i = 0; i < 10; ++i)
-    // {
-    //     std::cout << h.m_primes[i] << " ";
-    // }
-    // std::cout << std::endl;
 }

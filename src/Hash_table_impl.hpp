@@ -8,11 +8,12 @@
 // #include <vector>
 
 //--------------------_parametrize_ctor_------------------------//
+#include "Hash_table.h"
+#include <iostream>
 #include <vector>
 template <class K, class T>
-my::HashTable<K, T>::HashTable() :  m_max_size(0)
+my::HashTable<K, T>::HashTable() : m_max_size(0)
 {
-    // prime();
     m_key = 7;
     m_table.resize(7);
 }
@@ -21,6 +22,11 @@ my::HashTable<K, T>::HashTable() :  m_max_size(0)
 template <class K, class T>
 void my::HashTable<K, T>::Insertion(my::Pair<K, T> put)
 {
+    if (m_key == m_max_size)
+    {
+        rehash();
+    }
+
     K ind = put.first % m_key;
     auto itr = find_key(put.first);
 
@@ -63,6 +69,13 @@ T my::HashTable<K, T>::Retrieval(K Get)
     }
 }
 
+//---------------------------_get_-----------------------------------//
+template <typename K, typename T>
+T my::HashTable<K, T>::get(K key)
+{
+    return Retrieval(key);
+}
+
 //------------------------------_Deletion_--------------------------//
 template <typename K, typename T>
 void my::HashTable<K, T>::Deletion(K key)
@@ -93,6 +106,11 @@ void my::HashTable<K, T>::remove(K key)
 template <typename K, typename T>
 void my::HashTable<K, T>::put(K key, const T& value)
 {
+    if (m_key == m_max_size)
+    {
+        rehash();
+    }
+
     K ind = key % m_key;
 
     auto itr = find_key(key);
@@ -122,7 +140,7 @@ void my::HashTable<K, T>::put(K key, const T& value)
 
 //------------------------------_containsKey_-------------------------//
 template <typename K, typename T>
-bool my::HashTable<K, T>::containsKey(K key)
+bool my::HashTable<K, T>::containsKey(K key) const
 {
     if (find_key(key) != nullptr)
     {
@@ -134,7 +152,7 @@ bool my::HashTable<K, T>::containsKey(K key)
 
 //-------------------------------_containsValue_-------------------------//
 template <typename K, typename T>
-bool my::HashTable<K, T>::containsValue(const T& value)
+bool my::HashTable<K, T>::containsValue(const T& value) const
 {
     if (find_val(value) != nullptr)
     {
@@ -230,8 +248,28 @@ std::vector<my::Pair<K, T>> my::HashTable<K, T>::entrySet()
 }
 
 //-------------------------------------------||
+//                                           ||
 //--------_private_helper_functins_----------||
+//                                           ||
 //-------------------------------------------||
+
+//--------------------------------_rehash_------------------------------------//
+template <typename K, typename T>
+void my::HashTable<K, T>::rehash()
+{
+    std::cout << "YESSSSS" << std::endl;
+
+    size_t new_prime = prime();
+    std::vector<my::Pair<K, T>> elements = entrySet();
+
+    m_table.resize(new_prime);
+    m_key = new_prime;
+
+    for (const auto& pairs : elements)
+    {
+        Insertion(pairs);
+    }
+}
 
 //--------------------------------_find_key-----------------------------------//
 template <typename K, typename T>
@@ -272,8 +310,8 @@ template <class K, class T>
 size_t my::HashTable<K, T>::prime() // function to find prime numbers
 {
     std::vector<size_t> primes;
+    primes.reserve(10);
 
-    primes.reserve(100000);
     int num = 2;
     while (primes.size() < 100000)
     {
