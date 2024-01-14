@@ -16,10 +16,10 @@ namespace my {
         HashTable();            // constructor
 
         void Insertion(my::Pair<K, T> put);       // Associates a key-value pair in the hashtable.
-        T Retrieval(K Get);                 // Retrieves the value associated with a given key.
+        T Retrieval(K Get);                       // Retrieves the value associated with a given key.
         void Deletion(K key);                     // Removes the key-value pair associated with a given key.
         void put(K key, const T& value);          // nserts a key-value pair into the hashtable.
-        T get(K key);                       // Retrieves the value associated with the given key.
+        T get(K key);                             // Retrieves the value associated with the given key.
         void remove(K key);                       // Removes the key-value pair associated with the given key
         bool containsKey(K key) const;            // Checks if the hashtable contains a specific key.
         bool containsValue(const T& value) const; // Checks if the hashtable contains a specific value.
@@ -33,12 +33,13 @@ namespace my {
     private:
         void rehash();  // Increases the size of the hashtable and rehashes its contents
         size_t prime(); // function to find prime numbers
-        typename my::Forward_list<my::Pair<K, T>>::f_itr find_key(const K& key); // function to find key in linked list
-                                                                                 // and return iterator on it if not
-                                                                                 // found return end()(nullptr)
-        typename my::Forward_list<my::Pair<K, T>>::f_itr find_val(const T& val); // function to find val in linked list
-                                                                                 // and return iterator on it if not
-                                                                                 // found return end()(nullptr)
+        typename my::Forward_list<my::Pair<K, T>>::f_itr find_key(const K& key); /* function to find key in linked
+                                                                                  * list and return iterator on it if
+                                                                                  * not found return end()(nullptr)*/
+
+        typename my::Forward_list<my::Pair<K, T>>::f_itr find_val(const T& val); /* function to find val in linked
+                                                                                  * list and return iterator on it if
+                                                                                  * not found return end()(nullptr) */
 
     private:
         std::vector<my::Forward_list<my::Pair<K, T>>> m_table; // our hashTable

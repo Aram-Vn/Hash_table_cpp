@@ -8,9 +8,6 @@
 // #include <vector>
 
 //--------------------_parametrize_ctor_------------------------//
-#include "Hash_table.h"
-#include <iostream>
-#include <vector>
 template <class K, class T>
 my::HashTable<K, T>::HashTable() : m_max_size(0)
 {
